@@ -50,14 +50,16 @@ resource "aws_db_subnet_group" "mysql_standalone_subnetgroup" {
 # ---------------------------------------------
 resource "aws_db_instance" "mysql_standalone" {
   engine         = "mysql"
-  engine_version = "8.0.28"
+  # 8.0.28 は提供終了のため、東京リージョンで利用可能な 8.0 系を指定
+  engine_version = "8.0.46"
 
   identifier = "${var.project}-${var.environment}-mysql-standalone"
 
   username = var.username
   password = var.password
 
-  instance_class = "db.t2.micro"
+  # 現行 MySQL 8.0 では db.t2.micro が選択不可
+  instance_class = "db.t3.micro"
 
   allocated_storage     = 20
   max_allocated_storage = 50
