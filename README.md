@@ -11,14 +11,17 @@
         ... 省略 ...
 
           backend "s3" {
-            bucket  = "{バケット名}"
-            key     = "{キー名}"
-            region  = "ap-northeast-1"
-            profile = "terraform"
+            bucket = "{バケット名}"
+            key    = "{キー名}"
+            region = "ap-northeast-1"
           }
         }
 
         ... 省略 ...
+
+    ローカル実行時は AWS CLI プロファイルを環境変数で指定する。
+
+        export AWS_PROFILE=terraform
 
 
 1. `terraform.tfvars` ファイルの準備

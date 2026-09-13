@@ -9,24 +9,23 @@ terraform {
       version = "~> 3.0"
     }
   }
+  # CI では OIDC の環境変数、ローカルでは AWS_PROFILE を利用
   backend "s3" {
-    bucket  = "tastylog-dev-0912"
-    key     = "tastylog-dev.tfstate"
-    region  = "ap-northeast-1"
-    profile = "terraform"
+    bucket = "tastylog-dev-0912"
+    key    = "tastylog-dev.tfstate"
+    region = "ap-northeast-1"
   }
 }
 
 # ---------------------------------------------
 # Provider
 # ---------------------------------------------
+# profile を固定すると GitHub Actions で失敗するため未指定にする
 provider "aws" {
-  profile = "terraform"
-  region  = "ap-northeast-1"
+  region = "ap-northeast-1"
 }
 
 provider "aws" {
-  alias   = "virginia"
-  profile = "terraform"
-  region  = "us-east-1"
+  alias  = "virginia"
+  region = "us-east-1"
 }
