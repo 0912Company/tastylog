@@ -49,7 +49,7 @@ resource "aws_db_subnet_group" "mysql_standalone_subnetgroup" {
 # RDS instance
 # ---------------------------------------------
 resource "aws_db_instance" "mysql_standalone" {
-  engine         = "mysql"
+  engine = "mysql"
   # 8.0.28 は提供終了のため、東京リージョンで利用可能な 8.0 系を指定
   engine_version = "8.0.46"
 
