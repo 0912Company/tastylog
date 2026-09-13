@@ -16,7 +16,7 @@ permissions:
 env:
   TF_VERSION: 1.14.6
   AWS_REGION: ap-northeast-1
-  TF_PROECT: tastylog
+  TF_PROJECT: tastylog
   TF_ENVIRONMENT: dev
 
 defaults:
@@ -56,6 +56,6 @@ jobs:
             -var "environment=${{ env.TF_ENVIRONMENT }}" \
             -var "username=${{ secrets.MYSQL_USERNAME }}" \
             -var "password=${{ secrets.MYSQL_PASSWORD }}" \
-            -input=false" \
-            -no-color" \
+            -input=false \
+            -no-color \
             -detailed-exitcode
