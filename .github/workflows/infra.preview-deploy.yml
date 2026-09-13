@@ -13,10 +13,21 @@ permissions:
   id-token: write
   contents: read
 
+env:
+  TF_VERSION: 1.14.6
+
+defaults:
+  run: 
+    shell: bash
+    working-directory: "10_infra/"
+
 jobs:
   preview:
     name: "preview"
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo "Hello World"
+      - name: "Checkout"
+        uses: actions/checkout@v7
+      - name: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
