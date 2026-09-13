@@ -28,6 +28,7 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@v7
-      - name: hashicorp/setup-terraform@v4
+      - name: "Setup Terraform"
+        uses: hashicorp/setup-terraform@v4
         with:
           terraform_version: ${{ env.TF_VERSION }}
